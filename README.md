@@ -43,3 +43,41 @@ https://leetcode.com/problems/invalid-tweets/
 	from Tweets 
 	where length(content)>15
 ```
+
+https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/
+<br>1378. Replace Employee ID With The Unique Identifier
+```sql
+	# Write your MySQL query statement below
+	select unique_id , name from Employees E left join EmployeeUNI Eu
+	on e.id = eu.id
+```
+
+https://leetcode.com/problems/product-sales-analysis-i/
+<br>1068. Product Sales Analysis I
+```sql
+	select  product_name, year, price 
+	from Sales s 
+	join Product p
+	on s.product_id = p.product_id 
+```
+
+https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/
+<br>1581. Customer Who Visited but Did Not Make Any
+```sql
+	select customer_id , count(customer_id ) as count_no_trans 
+	from Visits v
+	left join Transactions t 
+	on v.visit_id = t.visit_id 
+	where t.visit_id is null
+	group  by customer_id
+```
+
+https://leetcode.com/problems/rising-temperature/
+<br>197. Rising Temperature
+```sql
+	select a.id
+	from Weather a
+	join Weather b
+	on a.recordDatedate_add(b.recordDate, interval 1 day)
+	where b.temperature < a.temperature 
+```
