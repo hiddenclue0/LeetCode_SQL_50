@@ -96,3 +96,18 @@ https://leetcode.com/problems/employee-bonus/
 	WHERE w1.temperature > w2.temperature
 	AND SUBDATE(w1.recordDate, 1) = w2.recordDate
 ```
+
+
+https://leetcode.com/problems/employee-bonus/
+<br>577. Employee Bonus
+```sql
+	SELECT machine_id, ROUND(AVG(end - start), 3) AS processing_time
+	FROM 
+	(SELECT machine_id, process_id, 
+		MAX(CASE WHEN activity_type = 'start' THEN timestamp END) AS start,
+		MAX(CASE WHEN activity_type = 'end' THEN timestamp END) AS end
+	 FROM Activity 
+	  GROUP BY machine_id, process_id) AS subq
+	GROUP BY machine_id
+```
+
